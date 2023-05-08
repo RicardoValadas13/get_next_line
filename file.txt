@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Ola e adeus hfdhyh yh y
+=======
+Ola e adeus gfg g gfghhfg hgghfgh hfghfghhfg hfghfgh
+>>>>>>> d494fda (LetsGo)
 e ola e adeus, a toda a gente
 fiquem bem meus caros colegas.
 

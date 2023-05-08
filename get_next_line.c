@@ -1,6 +1,7 @@
 #include "get_next_line.h"
 #include <unistd.h>
 
+<<<<<<< HEAD
 /* int ft_strlen(char *s)
 {
   int cnt;
@@ -131,4 +132,31 @@ char *get_next_line(int fd)
       line[linelen] = '\0';
       return line;
     }
+=======
+char *stash(char *buff)
+{
+  
 }
+char  *get_next_line(int fd)
+{
+  static char *temp;
+  char buff[BUFFER_SIZE];
+  int bt;
+  char *line;
+
+  if ((bt = read(fd, buff, BUFFER_SIZE)) < 0 || fd < 0)
+    return (NULL);
+  while ((bt = read(fd, buff, BUFFER_SIZE)) > 0)
+  {
+    stash(buff);
+  }
+  
+return(line);
+>>>>>>> d494fda (LetsGo)
+}
+
+
+    
+
+  
+
