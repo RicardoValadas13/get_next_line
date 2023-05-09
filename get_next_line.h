@@ -6,7 +6,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-<<<<<<< HEAD
 #include <stdlib.h>
 #include <string.h>
 
@@ -15,22 +14,10 @@
 
 # endif
 
+
 char  *get_next_line(int fd);
-int    main(void);
+int ft_strlen(const char *s);
+int check_newline(char  *buff);
+char    *thats_line(char  *s1, char  *s2);
 
-
-=======
-typedef struct s_list
-{
-    char    *content;
-    struct s_list  *next;
-}       t_list;
-char  *get_next_line(int fd);
-int    main(void);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-
-# endif
->>>>>>> d494fda (LetsGo)
 #endif
