@@ -1,26 +1,25 @@
 #include "get_next_line.h"
 
-char    *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    static char     buff[BUFFER_SIZE + 1];
-    char           *line;
-    int             bytes_read;
+	static char	buff[BUFFER_SIZE + 1];
+	char		*line;
+	int			bytes_read;
 
-    bytes_read = 1;
-    line = NULL;
-    if(fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE < 0)
-        return(NULL);
-    while( *buff || (bytes_read = read(fd, buff, BUFFER_SIZE)) > 0) 
+	bytes_read = 1;
+	line = NULL;
+	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
     {
-        line = thats_line(line, buff);
-        /* printf("LINE = %s\n", line);
-        printf("BUFFER = %s\n", buff);
-        printf("BYTES = %d\n", bytes_read);
-        printf("\n"); */
-        if (check_newline(buff))
-            break;
+        ft_bzero(buff, BUFFER_SIZE);
+		return (NULL);
     }
-    return (line);
+	while ( *buff || (bytes_read = read(fd, buff, BUFFER_SIZE)) > 0)
+	{
+		line = thats_line(line, buff);
+		if (check_newline(buff))
+			break ;
+	}
+	return (line);
 }
 
 /* int	main(void)
@@ -29,7 +28,7 @@ char    *get_next_line(int fd)
     char    *line;
     int      i;
 
-    fd = open("file.txt", O_RDONLY);
+    fd = open("read_error.txt", O_RDONLY);
     i = 1;
     while (1)
     {
@@ -45,5 +44,4 @@ char    *get_next_line(int fd)
     } 
     return (0);
 }
-
  */

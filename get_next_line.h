@@ -10,13 +10,14 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 1000000
 
 # endif
 
 char	*get_next_line(int fd);
 int		ft_strlen(const char *s);
-int    check_newline(char *buff);
+int		check_newline(char *buff);
 char	*thats_line(char *s1, char *s2);
+void	*ft_bzero(void *s, size_t n);
 
 #endif
