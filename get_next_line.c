@@ -1,45 +1,35 @@
 #include "get_next_line.h"
 
-
 char    *get_next_line(int fd)
 {
     static char     buff[BUFFER_SIZE + 1];
     char           *line;
-    static int      i;
-    int             j = 0;
+    int             bytes_read;
+
+    bytes_read = 1;
     line = NULL;
-    if(fd <= 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
+    if(fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE < 0)
         return(NULL);
-    while( *buff || (read(fd, buff, BUFFER_SIZE)) > 0) 
+    while( *buff || (bytes_read = read(fd, buff, BUFFER_SIZE)) > 0) 
     {
-        printf("buff_iter = %s | i = %d\n", &buff[i], i);
-        printf("buffer = %s\n", buff);
-        line = thats_line(line, &buff[i]);
-        i = 0;
-        i = check_newline(&buff[i]);
-        if (i > 0)
-        {
-            if (buff[BUFFER_SIZE] == '\n')
-                i = 0;
-            printf("i = %d\n", i);
-            while (j++ < BUFFER_SIZE)
-                printf("clean_buffer = %c\n", buff[j]);
-            break; 
-        }
+        line = thats_line(line, buff);
+        /* printf("LINE = %s\n", line);
+        printf("BUFFER = %s\n", buff);
+        printf("BYTES = %d\n", bytes_read);
+        printf("\n"); */
+        if (check_newline(buff))
+            break;
     }
     return (line);
 }
 
-int	main(void)
+/* int	main(void)
 {
     int     fd;
     char    *line;
     int      i;
 
     fd = open("file.txt", O_RDONLY);
-
- /*    line = get_next_line(fd);
-    printf("%s", line); */
     i = 1;
     while (1)
     {
@@ -56,3 +46,4 @@ int	main(void)
     return (0);
 }
 
+ */

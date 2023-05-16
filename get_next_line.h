@@ -16,7 +16,7 @@
 
 char	*get_next_line(int fd);
 int		ft_strlen(const char *s);
-int		check_newline(char *buff);
+int    check_newline(char *buff);
 char	*thats_line(char *s1, char *s2);
 
 #endif
